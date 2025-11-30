@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI CAKAP - TK Negeri Cempaka Jaya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+        }
+
+        .admin-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            margin-left: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .card .date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge-success {
+            background: #28a745;
+        }
+
+        .badge-warning {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .badge-info {
+            background: #17a2b8;
+        }
+
+        .comment-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comment-list {
+            margin-top: 2rem;
+        }
+
+        .comment-item {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li a {
+                text-align: center;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>SI CAKAP</h1>
+                <p>Sistem Informasi Catatan Aksi Kepala Sekolah</p>
+                <p>TK Negeri Cempaka Jaya Kota Pekalongan</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+            <li><a href="#admin" class="nav-link">Admin Panel</a></li>
+            <li><a href="#program" class="nav-link">Program Sekolah</a></li>
+            <li><a href="#aksi-harian" class="nav-link">Aksi Harian</a></li>
+            <li><a href="#statistik" class="nav-link">Statistik</a></li>
+            <li><a href="#kontak" class="nav-link">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <section id="beranda" class="hero">
+        <div class="container">
+            <h2>Transparansi untuk Kepercayaan, Akuntabilitas untuk Kemajuan</h2>
+            <p>Memantau dan berpartisipasi dalam kegiatan sekolah secara real-time</p>
+        </div>
+    </section>
+
+    <!-- ADMIN PANEL SECTION -->
+    <section id="admin" class="section" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Panel Admin Kepala Sekolah</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('program-form')">Tambah Program</button>
+                <button class="tab" onclick="switchTab('aksi-form')">Tambah Aksi Harian</button>
+            </div>
+
+            <!-- Form Program Sekolah -->
+            <div id="program-form" class="tab-content active">
+                <div class="admin-panel">
+                    <h3>Tambah Program Sekolah Baru</h3>
+                    <form id="addProgramForm">
+                        <div class="form-group">
+                            <label>Nama Program</label>
+                            <input type="text" id="programTitle" placeholder="Contoh: Program Literasi Anak Usia Dini" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Periode Program</label>
+                            <input type="text" id="programPeriod" placeholder="Contoh: Januari - Juni 2025" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Deskripsi Program</label>
+                            <textarea id="programDescription" placeholder="Jelaskan tujuan dan detail program..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Status Program</label>
+                            <select id="programStatus" required>
+                                <option value="">Pilih Status</option>
+                                <option value="Sedang Berjalan">Sedang Berjalan</option>
+                                <option value="Direncanakan">Direncanakan</option>
+                                <option value="Selesai">Selesai</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn">Publikasikan Program</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Form Aksi Harian -->
+            <div id="aksi-form" class="tab-content">
+                <div class="admin-panel">
+                    <h3>Tambah Aksi Harian</h3>
+                    <form id="addAksiForm">
+                        <div class="form-group">
+                            <label>Tanggal & Waktu</label>
+                            <input type="datetime-local" id="aksiDateTime" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Judul Kegiatan</label>
+                            <input type="text" id="aksiTitle" placeholder="Contoh: Supervisi Pembelajaran Kelas A" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Deskripsi Kegiatan</label>
+                            <textarea id="aksiDescription" placeholder="Jelaskan detail kegiatan yang dilakukan..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            <select id="aksiCategory" required>
+                                <option value="">Pilih Kategori</option>
+                                <option value="Supervisi">Supervisi</option>
+                                <option value="Rapat">Rapat</option>
+                                <option value="Pembinaan">Pembinaan</option>
+                                <option value="Administrasi">Administrasi</option>
+                                <option value="Kunjungan">Kunjungan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn">Publikasikan Aksi</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAM SEKOLAH SECTION -->
+    <section id="program" class="section">
+        <div class="container">
+            <h2 class="section-title">Program Sekolah</h2>
+            
+            <div class="card-grid" id="programList">
+                <div class="card">
+                    <div class="date">Periode: Januari - Juni 2025</div>
+                    <h3>Program Literasi Anak Usia Dini</h3>
+                    <p>Meningkatkan minat baca dan kemampuan literasi anak melalui kegiatan dongeng interaktif dan pojok baca.</p>
+                    <span class="badge badge-success">Sedang Berjalan</span>
+                </div>
+
+                <div class="card">
+                    <div class="date">Periode: Semester Genap 2024/2025</div>
+                    <h3>Pengembangan Karakter Anak</h3>
+                    <p>Program pembentukan karakter melalui pembiasaan nilai-nilai Pancasila dan budaya lokal.</p>
+                    <span class="badge badge-success">Sedang Berjalan</span>
+                </div>
+
+                <div class="card">
+                    <div class="date">Target: Maret 2025</div>
+                    <h3>Pelatihan Guru PAUD</h3>
+                    <p>Workshop dan pelatihan untuk meningkatkan kompetensi guru dalam pembelajaran berbasis teknologi.</p>
+                    <span class="badge badge-warning">Direncanakan</span>
+                </div>
+            </div>
+
+            <div class="comment-section">
+                <h3>Berikan Masukan Anda</h3>
+                <form class="comment-form" id="programCommentForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nama Anda" id="programName" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Anda" id="programEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Masukan atau saran untuk program sekolah..." id="programComment" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Komentar</button>
+                </form>
+                <div class="comment-list" id="programComments">
+                    <h4 style="margin-bottom: 1rem;">Komentar Terbaru</h4>
+                    <div class="comment-item">
+                        <div class="comment-author">Ibu Siti Aminah</div>
+                        <div class="date">28 November 2025</div>
+                        <p>Program literasi sangat bagus! Anak saya jadi lebih suka membaca buku cerita.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AKSI HARIAN SECTION -->
+    <section id="aksi-harian" class="section" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Aksi Harian Kepala Sekolah</h2>
+            
+            <div class="card-grid" id="aksiList">
+                <div class="card">
+                    <div class="date">29 November 2025 - 07:00 WIB</div>
+                    <h3>Supervisi Pembelajaran Kelas A</h3>
+                    <p>Melakukan observasi dan pendampingan pembelajaran di Kelas A. Memberikan feedback kepada guru tentang metode pembelajaran yang lebih interaktif.</p>
+                    <span class="badge badge-info">Supervisi</span>
+                </div>
+
+                <div class="card">
+                    <div class="date">28 November 2025 - 09:30 WIB</div>
+                    <h3>Rapat Koordinasi dengan Komite</h3>
+                    <p>Membahas rencana kegiatan akhir tahun dan persiapan penerimaan siswa baru tahun ajaran 2025/2026.</p>
+                    <span class="badge badge-info">Rapat</span>
+                </div>
+
+                <div class="card">
+                    <div class="date">27 November 2025 - 10:00 WIB</div>
+                    <h3>Pembinaan Guru</h3>
+                    <p>Sesi sharing dan diskusi tentang strategi pembelajaran berbasis bermain untuk anak usia dini.</p>
+                    <span class="badge badge-info">Pembinaan</span>
+                </div>
+            </div>
+
+            <div class="comment-section">
+                <h3>Berikan Tanggapan Anda</h3>
+                <form class="comment-form" id="aksiCommentForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nama Anda" id="aksiName" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Anda" id="aksiEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tanggapan atau pertanyaan untuk kepala sekolah..." id="aksiComment" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Komentar</button>
+                </form>
+                <div class="comment-list" id="aksiComments">
+                    <h4 style="margin-bottom: 1rem;">Tanggapan Terbaru</h4>
+                    <div class="comment-item">
+                        <div class="comment-author">Bapak Ahmad Fauzi</div>
+                        <div class="date">28 November 2025</div>
+                        <p>Terima kasih Bu Kepala atas dedikasinya. Semoga terus konsisten dalam memimpin sekolah.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTIK SECTION -->
+    <section id="statistik" class="section">
+        <div class="container">
+            <h2 class="section-title">Statistik SI CAKAP</h2>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="statAksi">3</div>
+                    <div class="stat-label">Aksi Harian Terdokumentasi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statProgram">3</div>
+                    <div class="stat-label">Program Sekolah</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statKomentar">2</div>
+                    <div class="stat-label">Komentar Masuk</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Pengunjung Bulan Ini</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK SECTION -->
+    <section id="kontak" class="section" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Kontak Kami</h2>
+            
+            <div class="card" style="max-width: 600px; margin: 0 auto;">
+                <h3>TK Negeri Cempaka Jaya</h3>
+                <p><strong>Alamat:</strong> Kota Pekalongan, Jawa Tengah</p>
+                <p><strong>Kepala Sekolah:</strong> Sutini, S.Pd.AUD, M.Pd</p>
+                <p><strong>Email:</strong> tkcempakajaya@gmail.com</p>
+                <p><strong>Telepon:</strong> (0285) xxx-xxxx</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TK Negeri Cempaka Jaya Kota Pekalongan</p>
+            <p>SI CAKAP - Transparansi untuk Kepercayaan, Akuntabilitas untuk Kemajuan</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data storage
+        let programs = [];
+        let aksiHarian = [];
+        let comments = { program: [], aksi: [] };
+
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                const target = this.getAttribute('href');
+                document.querySelector(target).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Tab switching
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Add Program Form
+        document.getElementById('addProgramForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const program = {
+                title: document.getElementById('programTitle').value,
+                period: document.getElementById('programPeriod').value,
+                description: document.getElementById('programDescription').value,
+                status: document.getElementById('programStatus').value,
+                date: new Date().toLocaleDateString('id-ID')
+            };
+            
+            programs.push(program);
+            
+            const statusClass = program.status === 'Sedang Berjalan' ? 'badge-success' : 
+                               program.status === 'Direncanakan' ? 'badge-warning' : '';
+            
+            const programHTML = `
+                <div class="card">
+                    <div class="date">Periode: ${program.period}</div>
+                    <h3>${program.title}</h3>
+                    <p>${program.description}</p>
+                    <span class="badge ${statusClass}">${program.status}</span>
+                </div>
+            `;
+            
+            document.getElementById('programList').insertAdjacentHTML('afterbegin', programHTML);
+            updateStats();
+            
+            this.reset();
+            alert('Program berhasil dipublikasikan!');
+            
+            // Scroll to program section
+            document.querySelector('#program').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add Aksi Harian Form
+        document.getElementById('addAksiForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const dateTime = new Date(document.getElementById('aksiDateTime').value);
+            const formattedDate = dateTime.toLocaleDateString('id-ID', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            const formattedTime = dateTime.toLocaleTimeString('id-ID', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            const aksi = {
+                title: document.getElementById('aksiTitle').value,
+                description: document.getElementById('aksiDescription').value,
+                category: document.getElementById('aksiCategory').value,
+                dateTime: `${formattedDate} - ${formattedTime} WIB`,
+                timestamp: dateTime.getTime()
+            };
+            
+            aksiHarian.push(aksi);
+            
+            const aksiHTML = `
+                <div class="card">
+                    <div class="date">${aksi.dateTime}</div>
+                    <h3>${aksi.title}</h3>
+                    <p>${aksi.description}</p>
+                    <span class="badge badge-info">${aksi.category}</span>
+                </div>
+            `;
+            
+            document.getElementById('aksiList').insertAdjacentHTML('afterbegin', aksiHTML);
+            updateStats();
+            
+            this.reset();
+            alert('Aksi harian berhasil dipublikasikan!');
+            
+            // Scroll to aksi harian section
+            document.querySelector('#aksi-harian').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Program Comment Form
+        document.getElementById('programCommentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const comment = {
+                name: document.getElementById('programName').value,
+                email: document.getElementById('programEmail').value,
+                text: document.getElementById('programComment').value,
+                date: new Date().toLocaleDateString('id-ID', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                })
+            };
+            
+            comments.program.push(comment);
+            
+            const commentHTML = `
+                <div class="comment-item">
+                    <div class="comment-author">${comment.name}</div>
+                    <div class="date">${comment.date}</div>
+                    <p>${comment.text}</p>
+                </div>
+            `;
+            
+            const existingComments = document.getElementById('programComments');
+            const h4 = existingComments.querySelector('h4');
+            h4.insertAdjacentHTML('afterend', commentHTML);
+            
+            updateStats();
+            this.reset();
+            alert('Terima kasih atas komentar Anda!');
+        });
+
+        // Aksi Comment Form
+        document.getElementById('aksiCommentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const comment = {
+                name: document.getElementById('aksiName').value,
+                email: document.getElementById('aksiEmail').value,
+                text: document.getElementById('aksiComment').value,
+                date: new Date().toLocaleDateString('id-ID', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                })
+            };
+            
+            comments.aksi.push(comment);
+            
+            const commentHTML = `
+                <div class="comment-item">
+                    <div class="comment-author">${comment.name}</div>
+                    <div class="date">${comment.date}</div>
+                    <p>${comment.text}</p>
+                </div>
+            `;
+            
+            const existingComments = document.getElementById('aksiComments');
+            const h4 = existingComments.querySelector('h4');
+            h4.insertAdjacentHTML('afterend', commentHTML);
+            
+            updateStats();
+            this.reset();
+            alert('Terima kasih atas tanggapan Anda!');
+        });
+
+        // Update Statistics
+        function updateStats() {
+            const totalPrograms = document.getElementById('programList').children.length;
+            const totalAksi = document.getElementById('aksiList').children.length;
+            const totalComments = comments.program.length + comments.aksi.length + 2; // +2 for initial comments
+            
+            document.getElementById('statProgram').textContent = totalPrograms;
+            document.getElementById('statAksi').textContent = totalAksi;
+            document.getElementById('statKomentar').textContent = totalComments;
+        }
+
+        // Set current date/time for aksi form
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('aksiDateTime').value = now.toISOString().slice(0, 16);
+    </script>
+</body>
+</html>
